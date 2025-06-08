@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping >
+  <!--Mapping Entity Class With Database Table-->
+  <class name="com.sLsD.entity.Product" table="PRODUCT" dynamic-insert="true">
+  
+  <!--Identity Property Configuration-->
+  <id name="pId" column="PID">
+    <!--Id Generator-->
+     <!--<generator class="sequence"/>It will create Default Sequence i.e. hibernate_sequence to generate Id Value-->
+     
+     <!--<generator class="sequence">Use configured sequence to generate Id value
+       <param name="sequence_name">hb_prod_sequence</param>       
+     </generator>-->
+     
+     <!--Create a new sequence based on given sequence related input values-->
+     <generator class="sequence">
+       <param name="sequence_name">dmc_hb_prod_seq</param>
+       <param name="initial_value">5002</param>
+       <param name="increment_size">2</param>
+     </generator>
+  </id>
+  
+  <!--Mapping Entity Class Properties With Database Table Columns-->
+  <property name="pName" column="PNAME"/>
+  <property name="price" column="PRICE"/>
+  <property name="qty" column="QTY"/>
+  </class>
+</hibernate-mapping>

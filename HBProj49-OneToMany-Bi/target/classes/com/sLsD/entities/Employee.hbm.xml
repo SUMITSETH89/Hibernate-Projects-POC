@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Employee" table="BI_OTM_EMPLOYEE">
+        <!--Id Field Configuration-->
+        <id name="empId" column="EMPID">
+         <generator class="sequence">
+           <param name="sequence_name">EMPLOYEE_OTM_SEQ</param>
+           <param name="initial_value">3000</param>
+           <param name="increment_size">1</param>
+         </generator>
+        </id>
+        <!--Properties Configuration-->
+        <property name="ename" column="ENAME" length="30" type="java.lang.String" not-null="true"/>
+        <property name="designation" column="ROLE" length="20" type="java.lang.String" not-null="true"/>
+        <property name="salary" column="SALARY" not-null="true"/>
+        <!--Parent Field Configuration-->
+        <many-to-one name="dept" class="com.sLsD.entities.Department" 
+                     column="DEPTID" cascade="all" lazy="no-proxy"/>
+      </class>
+    </hibernate-mapping>

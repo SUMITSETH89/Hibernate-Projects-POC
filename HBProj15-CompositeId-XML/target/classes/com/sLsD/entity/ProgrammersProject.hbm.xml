@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entity.ProgrammersProject" table="tbl_pgmr_proj" dynamic-insert="true" dynamic-update="true">
+        <!--Composite Id Field Configuration-->
+        <composite-id  name="id" class="com.sLsD.entity.ProgrammersProjectId">
+          <!--Configure Properties of Composite Id-->
+          <key-property name="pgmrId" column="PGMRID"/>
+          <key-property name="projId" column="PROJID"/>
+        </composite-id>
+        <property name="pgmrName" column="PGMR_NAME" length="30" not-null="true"/>
+        <property name="projName" column="PROJ_NAME" length="30" not-null="true"/>
+        <property name="pgmrSalary" column="PGMR_SAL" not-null="true"/>
+        <property name="budget" column="PROJ_BUDGET" not-null="true"/>
+      </class>
+    </hibernate-mapping>

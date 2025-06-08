@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Person" table="HB_PER_DETAILS_COLLECTION">
+       <id name="pid" column="PID">
+        <generator class="org.hibernate.id.IncrementGenerator"/>
+       </id>
+       <property name="pname" column="PNAME" length="30" not-null="true"/>
+       <property name="address" column="ADDRESS" length="50" not-null="true"/>
+       
+       <!--Configuring List Collection Property-->
+       <list name="nickNames" table="HB_PER_NICKNAMES_COLLECTION">
+       	<key column="PERSON_ID"/><!--FK Column-->
+       	<index column="IDX" type="java.lang.Integer" length="3"/><!--Index Column-->
+       	<element column="NICKNAME" type="java.lang.String"/><!--Column Name-->
+       </list>
+       
+       <bag name="friends" table="HB_PER_FRIENDS_COLLECTION">
+        <key column="PERSON_ID"/>
+        <element column="FRIENDS" type="java.lang.String"/>
+       </bag>
+       
+       <!--Configuring Set Collection Property-->
+       <set name="contacts" table="HB_PER_CONTACTS_COLLECTION">
+        <key column="PERSON_ID"/>
+        <element column="contact" type="java.lang.Long"/>
+       </set>
+       
+       <!--Configuring Map Collection Property-->
+       <map name="idDetails" table="HB_PER_ID_COLLECTION">
+         <key column="PERSON_ID"/>
+         <index column="IDTYPE" type="java.lang.String"/><!--Key In Map Collection-->
+         <element column="IDNUMBER" type="java.lang.Long"/>
+       </map>
+      </class>
+    </hibernate-mapping>

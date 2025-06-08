@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping >
+  <!--Mapping Entity Class With Database Table-->
+  <class name="com.sLsD.entity.Product" table="PRODUCT_UUID_GUID" dynamic-insert="true">
+  
+  <!--Identity Property Configuration-->
+  <id name="pId" column="PID" type="java.lang.String" length="50">
+    <!--Id Generator-->
+     <generator class="org.hibernate.id.UUIDGenerator"/>
+  </id>
+  
+  <!--Mapping Entity Class Properties With Database Table Columns-->
+  <property name="pName" column="PNAME" type="java.lang.String" length="30" not-null="true"/>
+  <property name="price" column="PRICE" type="java.lang.Double" not-null="true"/>
+  <property name="qty" column="QTY" type="java.lang.Double" not-null="true"/>
+  </class>
+</hibernate-mapping>

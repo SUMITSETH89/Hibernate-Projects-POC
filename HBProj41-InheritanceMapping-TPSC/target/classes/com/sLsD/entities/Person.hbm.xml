@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    <hibernate-mapping>
+       <!--Configure Super Class In Inheritance Hierarchy -->
+      <class name="com.sLsD.entities.Person" table="HB_INH_PERSON_TPSH">
+       <id name="id" column="ID" type="java.lang.Long">
+        <generator class="increment"/>
+       </id>
+       <!-- <discriminator column="PERSON_TYPE" type="string" length="10"/> -->
+       <property name="name" column="NAME" type="java.lang.String" length="30"/>
+        <property name="address" column="ADDRESS" type="java.lang.String" length="50"/>
+        <property name="age" column="AGE" type="java.lang.Integer"/>
+        <property name="profession" column="PROFESSION" type="java.lang.String" length="30"/>
+        
+        <!--Configure Sub-Class In Inheritance Hierarchy -->
+        <joined-subclass name="com.sLsD.entities.Student" table="HB_INH_STUDENT_TPSH">
+          <key column="PERSON_ID"/>
+          <property name="instituteName" column="INSTITUTE" type="java.lang.String" length="50"/>
+          <property name="course" column="COURSE" type="java.lang.String" length="30"/>
+          <property name="batch" column="BATCH" type="java.lang.Integer"/>
+          <property name="courseDuration" column="DURATION" type="java.lang.Integer"/>
+        </joined-subclass>
+        
+        <!--Configure Sub-Class In Inheritance Hierarchy -->
+        <joined-subclass name="com.sLsD.entities.Employee" table="HB_INH_EMPLOYEE_TPSH">
+         <key column="PERSON_ID"/>
+         <property name="company" column="COMPANY" type="java.lang.String" length="30"/>
+         <property name="designation" column="DESIGNATION" type="java.lang.String" length="30"/>
+         <property name="experience" column="EXP" type="java.lang.Integer"/>
+         <property name="salary" column="SAL" type="java.lang.Double"/>
+        </joined-subclass>
+        
+         <!--Configure Sub-Class In Inheritance Hierarchy -->
+         <joined-subclass name="com.sLsD.entities.Customer" table="HB_INH_CUSTOMER_TPSH">
+          <key column="PERSON_ID"/>
+          <property name="billNo" column="BILL_NO" type="java.lang.String" length="30"/>
+          <property name="billAmt" column="BILL_AMT" type="java.lang.Double"/>
+         </joined-subclass>
+      </class>
+    </hibernate-mapping>

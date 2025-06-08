@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+	<hibernate-configuration>
+	  <session-factory>
+	     <!--JDBC Properties Configuration-->
+	     <property name="connection.driver_name">oracle.jdbc.driver.OracleDriver</property>
+	     <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+	     <property name="connection.user">sumitodbd</property>
+	     <property name="connection.password">sum89it</property>
+	     
+	     <!--Dialect Configuration-->
+	     <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	     
+	     <!--Hibernate Configuration Property-->
+	     <property name="hibernate.hbm2ddl.auto">update</property>
+	     
+	     <!--Generated SQL Display Properties-->
+	     <property name="hibernate.show_sql">true</property>
+	     <property name="hibernate.format_sql">true</property>
+	     
+	     <!--Mapping File Configuration
+	     <mapping resource="com/sLsD/entities/Person.hbm.xml"/>-->
+	     
+	     <!--Mapping Class Configuration having Mapping Annotations-->
+	     <mapping class="com.sLsD.entities.Payment"/>
+	     <mapping class="com.sLsD.entities.CardPayment"/>
+	     <mapping class="com.sLsD.entities.ChequePayment"/>
+	     
+	     
+	  </session-factory>
+	</hibernate-configuration>

@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+    <hibernate-mapping>
+     <class name="com.sLsD.entities.Student" table="OTOPK_STUDENT">
+     
+       <!--Configure ID Field-->
+       <id name="sno" column="SNO">
+         <generator class="sequence">
+           <param name="sequence_name">HB_OTO_PK_SEQ</param>
+           <param name="initial_value">100</param>
+           <param name="increment_size">2</param>
+         </generator>
+       </id>
+       <property name="sname" column="SNAME" length="30" type="java.lang.String" not-null="true"/>
+       <property name="course" column="COURSE" length="15" type="java.lang.String" not-null="true"/>
+       <property name="saddr" column="ADDRESS" length="30" type="java.lang.String" not-null="true"/>
+       <one-to-one name="libraryDetails" class="com.sLsD.entities.LibraryMembership" 
+                   cascade="all" lazy="proxy"/>
+       
+     
+     </class>
+    </hibernate-mapping>

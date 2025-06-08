@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping >
+  <!--Mapping Entity Class With Database Table-->
+  <class name="com.sLsD.entity.SpecialProduct" table="SPL_PRODUCT">
+  
+  <!--Identity Property Configuration-->
+  <id name="pId" column="PID" type="java.lang.Long">
+    <!--Id Generator-->
+     <generator class="increment"/>
+  </id>
+  
+  <!--Mapping Entity Class Properties With Database Table Columns-->
+  <property name="pname" column="PNAME" type="java.lang.String" length="30"/>
+  <property name="price" column="PRICE" />
+  <property name="qty" column="QTY" />
+  </class>
+</hibernate-mapping>

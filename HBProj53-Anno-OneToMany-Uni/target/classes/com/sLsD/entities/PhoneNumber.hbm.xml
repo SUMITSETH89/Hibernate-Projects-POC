@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.PhoneNumber" table="HB_PHONE_NUMBER_OTM">
+        <id name="regNo" column="REGNO">
+         <generator class="sequence">
+          <param name="sequence_name">Phone_No_SEQ</param>
+          <param name="initial_value">1000</param>
+          <param name="increment_size">3</param>
+         </generator>
+        </id>
+        <property name="mobileNumber" column="MOBILE_NO" not-null="true"/>
+        <property name="numberType" column="NO_TYPE" not-null="true" length="15"/>
+        <property name="operator" column="PROVIDER" not-null="true" length="15"/>
+      </class>
+    </hibernate-mapping>

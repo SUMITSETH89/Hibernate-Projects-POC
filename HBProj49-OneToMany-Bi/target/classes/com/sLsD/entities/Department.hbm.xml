@@ -1,0 +1,27 @@
+
+    
+    <!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Department" table="BI_OTM_DEPARTMENT" proxy = "com.sLsD.entities.IDepartmentProxy">
+      
+       <!--ID Field Configuration-->
+       <id name="deptNo" column="DEPTNO">
+         <!--Sequence Generator-->
+          <generator class="sequence">
+            <param name="sequence_name">HB_DEPT_OTM_SEQ</param>
+            <param name="initial_value">2000</param>
+            <param name="increment_size">2</param>
+          </generator>
+       </id>
+       <!--Properties Configuration-->
+       <property name="deptName" column="DNAME" length="30" type="java.lang.String"/>
+       <property name="deptHead" column="DHEAD" length="30" type="java.lang.String"/>
+       <set name="employees" cascade = "all-delete-orphan" lazy="extra" inverse="true">
+         <key column="DEPTID" foreign-key = "FK_EMPLOYEE"/><!--Foreign Key Configuration-->
+         <one-to-many class="com.sLsD.entities.Employee"/>
+       </set>
+      </class>
+    </hibernate-mapping>

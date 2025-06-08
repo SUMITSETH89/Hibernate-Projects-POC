@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping >
+  <!--Mapping Entity Class With Database Table-->
+  <class name="com.sLsD.entity.Product" table="PRODUCT" dynamic-insert="true" dynamic-update="true" >
+  
+  <!--Identity Property Configuration-->
+  <id name="pid" column="PID" unsaved-value="2019">
+    <!--Id Generator
+     <generator class="increment"/>Type#1 Without Generator and unsave-value attribute Configuration -->
+    <!-- <generator class="increment"/>-->
+  </id>
+  
+  <!--Mapping Entity Class Properties With Database Table Columns-->
+  <property name="pname" column="PNAME"/>
+  <property name="price" column="PRICE"/>
+  <property name="qty" column="QTY"/>
+  </class>
+</hibernate-mapping>

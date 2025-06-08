@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+   <!--Mapping Entity to DB Table-->
+   <hibernate-mapping>
+     <class name="com.sLsD.entity.Stock" table="tbl_stock" dynamic-insert="true" dynamic-update="true">
+       <id name="stockId" column="sId">
+         <generator class="increment"/>
+       </id>
+       <!--Versioning and TimeStamping Both Cannot Be Placed In the Single Mapping File-->
+       <!--<version name="updationCount" column="count"/>-->
+       <timestamp name="lastUpdated" column="updated_on"/>
+       <property name="stockName" column="sName" not-null="true" length="30"/>
+       <property name="price" column="price" not-null="true"/>
+       <property name="exchange" column="exchange" not-null="true" length="30"/>
+     </class>
+   </hibernate-mapping>

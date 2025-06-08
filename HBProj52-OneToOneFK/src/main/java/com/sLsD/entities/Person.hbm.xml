@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+    <hibernate-mapping>
+     <class name="com.sLsD.entities.Person" table="OTOFK_PERSON">
+     
+       <!--Configure ID Field-->
+       <id name="pid" column="PID">
+         <generator class="sequence">
+           <param name="sequence_name">HB_OTO_FK_SEQ</param>
+           <param name="initial_value">1000</param>
+           <param name="increment_size">1</param>
+         </generator>
+       </id>
+       <property name="pname" column="PERSON_NAME" length="15" type="java.lang.String"/>
+       <property name="address" column="ADDRESS" length="30" type="java.lang.String" />
+     </class>
+    </hibernate-mapping>

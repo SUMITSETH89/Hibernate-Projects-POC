@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entity.ProductDetails" table="tbl_product_details">
+        <!--Id Field Configuration-->
+        <id name="pid" column="PID">
+         <!--Id Field Generator-->
+         <generator class="org.hibernate.id.IncrementGenerator"/>
+        </id>
+        <!--Properties Configuration-->
+        <property name="pname" column="PNAME" type="java.lang.String" length="30" not-null="true"/>
+        <property name="price" column="PRICE" type="java.lang.Double" length="10" precision="2" not-null="true"/>
+        <property name="qty" column="QTY" type="java.lang.Double" length="10" precision="2" not-null="true"/>
+      </class>
+      <query name="GET_PRODUCT_DETAILS_RECORDS"><![CDATA[FROM ProductDetails ORDER BY pname]]></query>
+      <query name="UPDATE_PRODUCT_BY_ID"><![CDATA[ UPDATE ProductDetails SET price = ?1 WHERE pid = ?2]]></query>
+    </hibernate-mapping>

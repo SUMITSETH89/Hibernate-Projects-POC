@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Customer" table="CUSTOMERS_ORDERS">
+      
+        <!--Composite Id Field Configuration-->
+        <composite-id class="com.sLsD.entities.CustomerOrdersId" name="id">
+          <key-property name="cid" column="CUST_ID"/>
+          <key-property name="oid" column="ORDER_ID"/>
+        </composite-id>
+        <!--Properties Mapping-->
+        <property name="product" column="PRODUCT" length="20" not-null="true"/>
+        <property name="price" column="PRICE" precision="7" scale="2"/>
+        <property name="address" column="ADDRESS" length="30" not-null="true"/>
+        <property name="dop" column="PURCHASE_DATE" not-null="true"/>
+      
+      </class>
+    </hibernate-mapping>

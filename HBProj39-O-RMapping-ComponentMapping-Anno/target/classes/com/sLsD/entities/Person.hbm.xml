@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Person" table="tbl_person_details" dynamic-insert="true">
+        <!--Id Property Configuration-->
+        <id name="pid" column="PID" type="java.lang.Long">
+          <generator class="org.hibernate.id.IncrementGenerator"/>
+        </id>
+        <!--Mapping Person Entity Class Properties With DB Table Columns-->
+        <property name="pname" column="PNAME" type="java.lang.String" length="30" not-null="true"/>
+        <property name="paddrs" column="address" type="java.lang.String" length="100" not-null="true"/>
+        
+        <!--HAS-A Type Property Component Mapping-->
+        <component name="jobDetails" class="com.sLsD.entities.JobDetails">
+         <property name="job" column="JOB" type="java.lang.String" length="20" not-null="true"/>
+         <property name="designation" column="DESIGNATION" type="java.lang.String" length="20" not-null="true"/>
+         <property name="company" column="COMPANY" type="java.lang.String" length="20" not-null="true"/>
+         <property name="age" column="AGE" type="java.lang.Integer" length="3" not-null="true"></property>
+         <property name="salary" column="SAL" type="java.lang.Double" precision="10" scale="2" not-null="true"/>
+        </component>
+        
+      </class>
+    </hibernate-mapping>

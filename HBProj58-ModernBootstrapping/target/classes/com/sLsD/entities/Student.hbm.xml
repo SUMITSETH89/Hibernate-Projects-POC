@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Student" table="HB_STUDENT" dynamic-insert="true" dynamic-update="true">
+       
+       <!--ID Field Configuration-->
+       <id name="sid" column="SID">
+         <generator class="increment"/>
+       </id>
+      
+       <property name="sname" column="SNAME" length="15" not-null="true"/>
+       <property name="institute" column="COLLEGE" length="30" not-null="true"/>
+       <property name="course" column="COURSE" length="15" not-null="true"/>
+       <property name="duration" column="DURATION" precision="3" scale="0" not-null="true"/>
+      </class>
+    </hibernate-mapping>

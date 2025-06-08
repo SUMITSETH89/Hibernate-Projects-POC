@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Person" table="HB_PERSON_DETAILS_OTM">
+      
+       <!--Id Field Configuration-->
+       <id name="pid" column="PID">
+         <generator class="org.hibernate.id.IncrementGenerator"/>
+       </id>
+       <property name="pname" column="PNAME" not-null="true" length="30"/>
+       <property name="address" column="ADDRESS" length="50" not-null="true"/>
+       <!--Collection Type Special Property Cfg-->
+       <!-- <bag name="numList" cascade="all" lazy="false">
+         Foreign Key
+         <key column="PERSON_ID"/>
+         <one-to-many class="com.sLsD.entities.PhoneNumber"/>
+       </bag> -->
+       <bag name="numList" cascade="all-delete-orphan" lazy="false">
+         <!--Foreign Key-->
+         <key column="PERSON_ID"/>
+         <one-to-many class="com.sLsD.entities.PhoneNumber"/>
+       </bag>
+         
+      </class>
+    </hibernate-mapping>

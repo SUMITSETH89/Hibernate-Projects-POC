@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    <hibernate-mapping>
+     <class name="com.sLsD.entities.Passport" table="OTOFK_PASSPORT">
+     
+       <!--Configure ID Field-->
+       <id name="passportNo" column="PASSPORT_NO">
+         <generator class="increment"/>   
+       </id>
+       <property name="issuedOn" column="ISSUED_ON" type="java.time.LocalDate" not-null="true"/>
+       <property name="expiredOn" column="EXPIRED_ON"  type="java.time.LocalDate" not-null="true"/>
+       <property name="country" column="COUNTRY"    type="java.lang.String" not-null="true"/>
+       <many-to-one name = "personDetails" class="com.sLsD.entities.Person" lazy="proxy"
+                    column="PERSON_ID" not-null= "true" unique="true" cascade = "all"/>
+     </class>
+    </hibernate-mapping>

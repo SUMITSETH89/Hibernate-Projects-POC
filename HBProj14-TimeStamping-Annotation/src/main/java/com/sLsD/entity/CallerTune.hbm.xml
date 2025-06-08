@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+   <!--Mapping Entity to DB Table-->
+   <hibernate-mapping>
+     <class name="com.sLsD.entity.CallerTune" table="caller_tune" dynamic-insert="true" dynamic-update="true">
+       <id name="tuneId" column="tId">
+         <generator class="increment"/>
+       </id>
+       <!--Versioning-->
+       <version name="updationCount" column="count"/>
+       <property name="tuneName" column="tName"/>
+       <property name="movieName" column="mName"/>
+     </class>
+   </hibernate-mapping>

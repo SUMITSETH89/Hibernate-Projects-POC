@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    <hibernate-mapping>
+     <class name="com.sLsD.entities.LibraryMembership" table="OTOPK_LIBRARY_MEMBERSHIP">
+     
+       <!--Configure ID Field-->
+       <id name="membershipId" column="MID">
+         <generator class="foreign">
+           <param name="property">studentDetails</param><!--HAS-A Property Details-->
+         </generator><!--Foreign Generator is given to gather Id Value for the current object
+                         from the associated Parent object..-->
+                      <!--Foreign Generator gets the associated Parent object through 
+                          studentDetails property;collects its Id value; makes its Id
+                          value as current object Id value.-->
+       </id>
+       <property name="college" column="COLLEGE" length="15" type="java.lang.String" not-null="true"/>
+       <property name="validFor" column="VALIDITY"  type="java.lang.Integer" not-null="true"/>
+       <property name="joiningDate" column="DOJ"    type="java.util.Date" not-null="true"/>
+       <one-to-one name="studentDetails" class="com.sLsD.entities.Student" 
+                   cascade="all" lazy="proxy" constrained="true"/>
+       
+     
+     </class>
+    </hibernate-mapping>

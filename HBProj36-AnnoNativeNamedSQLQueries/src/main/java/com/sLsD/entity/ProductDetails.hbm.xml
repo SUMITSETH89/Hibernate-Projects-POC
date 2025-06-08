@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entity.ProductDetails" table="tbl_product_details">
+        <!--Id Field Configuration-->
+        <id name="pid" column="PID">
+         <!--Id Field Generator-->
+         <generator class="org.hibernate.id.IncrementGenerator"/>
+        </id>
+        <!--Properties Configuration-->
+        <property name="pname" column="PNAME" type="java.lang.String" length="30" not-null="true"/>
+        <property name="price" column="PRICE" type="java.lang.Double" length="10" precision="2" not-null="true"/>
+        <property name="qty" column="QTY" type="java.lang.Double" length="10" precision="2" not-null="true"/>
+      </class>
+      <!--HQL/Native SQL Queries should be used outside of the <class> tag-->
+      <sql-query name="GET_PRODS_BY_PRICE_RANGE"><![CDATA[SELECT * FROM TBL_PRODUCT_DETAILS WHERE PRICE BETWEEN ?1 AND ?2 ORDER BY PID]]></sql-query>
+      <sql-query name="HIKE_PRICE_BY_PROD_NAME"><![CDATA[UPDATE TBL_PRODUCT_DETAILS SET PRICE=:p1 WHERE PNAME=:p2]]></sql-query>
+      <sql-query name="MAX_PRICE_PROD"><![CDATA[SELECT MAX(PRICE) AS higest_price FROM TBL_PRODUCT_DETAILS]]></sql-query>
+      <sql-query name="AVG_PROD_PRICE"><![CDATA[SELECT AVG(PRICE) AS average_price FROM TBL_PRODUCT_DETAILS]]></sql-query>
+   </hibernate-mapping>

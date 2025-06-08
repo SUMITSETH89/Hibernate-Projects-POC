@@ -1,0 +1,28 @@
+
+    
+    <!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+      <class name="com.sLsD.entities.Doctor" table="M2M_DOCTOR">
+      
+       <!--ID Field Configuration-->
+       <id name="docId" column="DOCTORID">
+         <!--Sequence Generator-->
+          <generator class="sequence">
+            <param name="sequence_name">HB_DOCTOR_M2M_SEQ</param>
+            <param name="initial_value">100</param>
+            <param name="increment_size">5</param>
+          </generator>
+       </id>
+       <!--Properties Configuration-->
+       <property name="docName" column="DNAME" length="30" type="java.lang.String"/>
+       <property name="specialization" column="SPECIALIST" length="20" type="java.lang.String"/>
+       <property name="hospital" column="HOSPITAL" length="15" type="java.lang.String"/>
+       <set name="patients" cascade = "all" lazy="extra" inverse="true">
+         <key column="DOCTOR_ID" foreign-key = "FK_M2M_DOCTOR"/><!--Owning Foreign Key-->
+         <many-to-many class="com.sLsD.entities.Patient" column="PATIENT_ID"/><!--Non-Owning Foreign Key-->
+       </set>
+      </class>
+    </hibernate-mapping>

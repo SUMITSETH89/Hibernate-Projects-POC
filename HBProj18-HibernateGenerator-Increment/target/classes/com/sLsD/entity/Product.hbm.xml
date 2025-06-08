@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping >
+  <!--Mapping Entity Class With Database Table-->
+  <class name="com.sLsD.entity.Product" table="PRODUCT" dynamic-insert="true">
+  
+  <!--Identity Property Configuration-->
+  <id name="pId" column="PID">
+    <!--Id Generator-->
+     <!--<generator class="org.hibernate.id.Assigned"/>-->
+     <generator class="org.hibernate.id.IncrementGenerator"/>
+  </id>
+  
+  <!--Mapping Entity Class Properties With Database Table Columns-->
+  <property name="pName" column="PNAME"/>
+  <property name="price" column="PRICE"/>
+  <property name="qty" column="QTY"/>
+  </class>
+</hibernate-mapping>
